@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_dialer"
+        android:icon="@android:drawable/ic_dialog_dialer"
+        android:title="Menu"/>
+
+    <item
+        android:id="@+id/menu_email"
+        android:icon="@android:drawable/ic_dialog_email"
+        android:title="Email"/>
+    
+    <item
+        android:id="@+id/menu_map"
+        android:icon="@android:drawable/ic_dialog_map"
+        android:title="Map"/>
+
+</menu>
