@@ -1,9 +1,9 @@
 package sg.edu.nus.mtix;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -28,13 +28,13 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnFr
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment = null;
                 switch (item.getItemId()) {
-                    case R.id.menu_dialer:
+                    case R.id.menu_home:
                         fragment = HomeFragment.newInstance();
                         break;
-                    case R.id.menu_email:
+                    case R.id.menu_qrcode:
                         fragment = QRCodeFragment.newInstance();
                         break;
-                    case R.id.menu_map:
+                    case R.id.menu_contact:
                         fragment = ContactFragment.newInstance();
                         break;
                 }
