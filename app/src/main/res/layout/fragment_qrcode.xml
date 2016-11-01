@@ -5,9 +5,11 @@
     tools:context="sg.edu.nus.mtix.QRCodeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ImageView
+        android:layout_width="200dip"
+        android:layout_height="200dip"
+        android:id="@+id/imageView"
+        android:scaleType="fitXY"
+        android:layout_gravity="center_horizontal"/>
 
 </FrameLayout>

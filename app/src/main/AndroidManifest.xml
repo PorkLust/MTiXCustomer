@@ -41,7 +41,10 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".WelcomeActivity" />
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".QRCodeActivity" />
+        <activity android:name=".QRDB" />
+        <activity android:name=".DBHelper"></activity>
     </application>
 
 </manifest>
