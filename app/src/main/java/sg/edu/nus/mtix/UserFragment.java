@@ -63,7 +63,6 @@ public class UserFragment extends Fragment {
 
         CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), R.layout.fragment_user, rowItems);
         listview.setAdapter(adapter);
-        //listview.setOnItemClickListener(getActivity());
 
         return view;
     }

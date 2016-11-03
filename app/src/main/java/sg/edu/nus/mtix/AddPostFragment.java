@@ -32,7 +32,7 @@ public class AddPostFragment extends Fragment {
     private ImageView imageView;
     String imgDecodableString = "";
     MyPostDB db;
-   // AllContentDB db1;
+    AllPostDB db1;
 
     private OnFragmentInteractionListener listener;
 
@@ -48,7 +48,7 @@ public class AddPostFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         db = new MyPostDB(getActivity());
-       // db1 = new AllContentDB(this);
+        db1 = new AllPostDB(getActivity());
 
     }
 
@@ -91,9 +91,9 @@ public class AddPostFragment extends Fragment {
                 db.insertRecord(titleTyped, contentTyped, data);
                 db.close();
 
-                //db1.open();
-                //db1.insertRecord(titleTyped, contentTyped, data);
-                //db1.close();
+                db1.open();
+                db1.insertRecord(titleTyped, contentTyped, data);
+                db1.close();
 
                 Toast.makeText(getActivity(), "Post loaded successfully.", Toast.LENGTH_SHORT).show();
 
@@ -121,13 +121,6 @@ public class AddPostFragment extends Fragment {
         super.onDetach();
         listener = null;
     }
-
-    /*
-    public void onClick_LoadImageFromGallery(View view) {
-        //create intent to open image applications like gallery
-        Intent myIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(myIntent, RESULT_LOAD_IMG);
-    } */
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
