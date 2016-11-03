@@ -1,23 +1,18 @@
 package sg.edu.nus.mtix;
 
-
-import android.content.Context;
+import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+public class MyPostListView extends Activity implements AdapterView.OnItemClickListener {
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class UserFragment extends Fragment {
     public static String[] titles;
     public static String[] descriptions;
     public static ArrayList<byte[]> images = new ArrayList<byte[]>();
@@ -27,31 +22,15 @@ public class UserFragment extends Fragment {
     ListView listview;
     List<RowItem> rowItems;
 
-    private OnFragmentInteractionListener listener;
-
-    public static UserFragment newInstance() {
-        return new UserFragment();
-    }
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_my_post_list_view);
 
-    }
-
-    public UserFragment() {
-        // Required empty public constructor
-    }
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_user, container, false);
-        listview = (ListView) view.findViewById(R.id.listview);
+        listview = (ListView) findViewById(R.id.listview);
         rowItems = new ArrayList<RowItem>();
 
-        db = new MyPostDB(getActivity());
+        db = new MyPostDB(this);
 
         initialise(); //initialise title, description, images
 
@@ -61,19 +40,16 @@ public class UserFragment extends Fragment {
             rowItems.add(item);
         }
 
-        CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), R.layout.fragment_user, rowItems);
+        CustomListViewAdapter adapter = new CustomListViewAdapter(this, R.layout.activity_custom_list_view_adapter, rowItems);
         listview.setAdapter(adapter);
-        //listview.setOnItemClickListener(getActivity());
-
-        return view;
+        listview.setOnItemClickListener(this);
     }
 
-    /*
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast toast = Toast.makeText(getActivity(), "Post " + (position + 1) + "  |  " + rowItems.get(position), Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext(), "Post " + (position + 1) + "  |  " + rowItems.get(position), Toast.LENGTH_SHORT);
         toast.show();
-    } */
+    }
 
     //initialise title, description, image
     public void initialise() {
@@ -100,25 +76,5 @@ public class UserFragment extends Fragment {
         descriptions = new String[adescriptions.size()];
         descriptions = adescriptions.toArray(descriptions);
 
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            listener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        listener = null;
-    }
-
-    public interface OnFragmentInteractionListener {
-        public void onFragmentInteraction(String str);
     }
 }

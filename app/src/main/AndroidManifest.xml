@@ -43,7 +43,8 @@
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".QRDB" />
-        <activity android:name=".DBHelper"></activity>
+        <activity android:name=".DBHelper" />
+        <activity android:name=".MyPostListView"></activity>
     </application>
 
 </manifest>
