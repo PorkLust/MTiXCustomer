@@ -9,11 +9,22 @@
     <item
         android:id="@+id/menu_qrcode"
         android:icon="@drawable/btmnav_qrcode"
-        android:title="QrCode"/>
+        android:title="QR Code"/>
+
+    <item
+        android:id="@+id/menu_addpost"
+        android:icon="@drawable/btmnav_addpost"
+        android:title="Post"/>
     
     <item
-        android:id="@+id/menu_contact"
-        android:icon="@drawable/btmnav_call"
-        android:title="Contact"/>
+        android:id="@+id/menu_map"
+        android:icon="@drawable/btmnav_map"
+        android:title="Maps"/>
+
+    <item
+        android:id="@+id/menu_user"
+        android:icon="@drawable/btmnav_user"
+        android:title="Profile"/>
+
 
 </menu>

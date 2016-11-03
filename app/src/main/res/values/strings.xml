@@ -2,6 +2,10 @@
     <string name="app_name">MTiX</string>
     <string name="title_activity_maps">Map</string>
 
+    <string name="login">Log In</string>
+    <string name="email">EMAIL</string>
+    <string name="password">PASSWORD</string>
+
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>

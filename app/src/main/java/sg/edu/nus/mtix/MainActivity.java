@@ -6,10 +6,13 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity implements HomeFragment.OnFragmentInteractionListener,
-        QRCodeFragment.OnFragmentInteractionListener, ContactFragment.OnFragmentInteractionListener{
+        QRCodeFragment.OnFragmentInteractionListener, MapFragment.OnFragmentInteractionListener, UserFragment.OnFragmentInteractionListener
+        ,AddPostFragment.OnFragmentInteractionListener{
 
     BottomNavigationView bottomNavigationView;
 
@@ -34,8 +37,14 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnFr
                     case R.id.menu_qrcode:
                         fragment = QRCodeFragment.newInstance();
                         break;
-                    case R.id.menu_contact:
-                        fragment = ContactFragment.newInstance();
+                    case R.id.menu_map:
+                        fragment = MapFragment.newInstance();
+                        break;
+                    case R.id.menu_user:
+                        fragment = UserFragment.newInstance();
+                        break;
+                    case R.id.menu_addpost:
+                        fragment = AddPostFragment.newInstance();
                         break;
                 }
                 if (fragment != null) {
@@ -47,6 +56,15 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnFr
             }
         });
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.activity_main_actions, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
     public void onFragmentInteraction(String str){
 
     }

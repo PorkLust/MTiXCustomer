@@ -12,12 +12,12 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ContactFragment extends Fragment {
+public class UserFragment extends Fragment {
 
     private OnFragmentInteractionListener listener;
 
-    public static ContactFragment newInstance() {
-        return new ContactFragment();
+    public static UserFragment newInstance() {
+        return new UserFragment();
     }
 
     @Override
@@ -25,7 +25,7 @@ public class ContactFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    public ContactFragment() {
+    public UserFragment() {
         // Required empty public constructor
     }
 
@@ -34,7 +34,7 @@ public class ContactFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contact, container, false);
+        return inflater.inflate(R.layout.fragment_user, container, false);
     }
 
     @Override

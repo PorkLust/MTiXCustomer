@@ -12,12 +12,13 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class AddPostFragment extends Fragment {
+
 
     private OnFragmentInteractionListener listener;
 
-    public static HomeFragment newInstance() {
-        return new HomeFragment();
+    public static AddPostFragment newInstance() {
+        return new AddPostFragment();
     }
 
     @Override
@@ -25,7 +26,7 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    public HomeFragment() {
+    public AddPostFragment() {
         // Required empty public constructor
     }
 
@@ -33,9 +34,8 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        getActivity().setTitle("HELLO");
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_add_post, container, false);
     }
 
     @Override
@@ -54,9 +54,7 @@ public class HomeFragment extends Fragment {
         listener = null;
     }
 
-
     public interface OnFragmentInteractionListener {
         public void onFragmentInteraction(String str);
     }
 }
-
