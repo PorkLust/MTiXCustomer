@@ -2,11 +2,14 @@ package sg.edu.nus.mtix;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
 /**
@@ -14,7 +17,8 @@ import android.view.ViewGroup;
  */
 public class MapFragment extends Fragment  {
 
-
+    TextView tvStarTheatre, tvStarArena, tvStarAtria;
+    ImageView imageView1, imageView2, imageView3;
 
     private OnFragmentInteractionListener listener;
 
@@ -35,8 +39,43 @@ public class MapFragment extends Fragment  {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_map, container, false);
+        View view = inflater.inflate(R.layout.fragment_map, container, false);
+        tvStarTheatre = (TextView) view.findViewById(R.id.textView1);
+        tvStarArena = (TextView) view.findViewById(R.id.textView2);
+        tvStarAtria = (TextView) view.findViewById(R.id.textView3);
+        imageView1 = (ImageView) view.findViewById(R.id.imageView1);
+        imageView2 = (ImageView) view.findViewById(R.id.imageView2);
+        imageView3 = (ImageView) view.findViewById(R.id.imageView3);
+
+        imageView1.setImageResource(R.drawable.startheatre);
+        imageView2.setImageResource(R.drawable.arena);
+        imageView3.setImageResource(R.drawable.atria);
+
+        tvStarTheatre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(getActivity(), MapsTheatreActivity.class);
+                startActivity(myIntent);
+            }
+        });
+
+        tvStarArena.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(getActivity(), MapsArenaActivity.class);
+                startActivity(myIntent);
+            }
+        });
+
+        tvStarAtria.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(getActivity(), MapsAtriaActivity.class);
+                startActivity(myIntent);
+            }
+        });
+
+        return view;
     }
 
     @Override
