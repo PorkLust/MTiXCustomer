@@ -1,6 +1,7 @@
 package sg.edu.nus.mtix;
 
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -10,8 +11,14 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -25,12 +32,13 @@ import java.io.ByteArrayOutputStream;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AddPostFragment extends Fragment {
+public class AddPostFragment extends DialogFragment {
 
     private EditText title;
     private EditText content;
     private ImageView imageView;
     String imgDecodableString = "";
+    Toolbar toolbar;
     MyPostDB db;
     AllPostDB db1;
 
@@ -46,6 +54,8 @@ public class AddPostFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStyle(AddPostFragment.STYLE_NO_TITLE, R.style.PopupTheme);
+        setHasOptionsMenu(true);
 
         db = new MyPostDB(getActivity());
         db1 = new AllPostDB(getActivity());
@@ -66,6 +76,52 @@ public class AddPostFragment extends Fragment {
         content = (EditText) view.findViewById(R.id.contentInput);
         imageView = (ImageView) view.findViewById(R.id.imageViewDesc);
 
+        toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int id = item.getItemId();
+                switch(id) {
+                    case R.id.action_post:
+                        String titleTyped = title.getText().toString();
+                        String contentTyped = content.getText().toString();
+                        Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+
+                        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 0, outputStream);
+                        byte[] data = outputStream.toByteArray();
+
+                        db.open();
+                        db.insertRecord(titleTyped, contentTyped, data);
+                        db.close();
+
+                        db1.open();
+                        db1.insertRecord(titleTyped, contentTyped, data);
+                        db1.close();
+
+                        Toast.makeText(getActivity(), "Post loaded successfully.", Toast.LENGTH_SHORT).show();
+
+                        Fragment fragment = UserFragment.newInstance();
+
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, fragment).commit();
+
+                        dismiss();
+                        return true;
+                    case R.id.action_back:
+                        FragmentTransaction fragmentTransaction =  getActivity().getSupportFragmentManager().beginTransaction();
+                        Fragment homeFragment = new HomeFragment();
+                        fragmentTransaction.replace(R.id.frameLayout, homeFragment, "homeFragment");
+                        fragmentTransaction.addToBackStack("homeFragment");
+                        fragmentTransaction.commit();
+                        dismiss();
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+        toolbar.inflateMenu(R.menu.activity_main_actions);
+
         Button uploadImageBtn = (Button) view.findViewById(R.id.button2);
         uploadImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,35 +131,21 @@ public class AddPostFragment extends Fragment {
             }
         });
 
-        Button uploadPostBtn = (Button) view.findViewById(R.id.button3);
-        uploadPostBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String titleTyped = title.getText().toString();
-                String contentTyped = content.getText().toString();
-                Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-
-                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 0, outputStream);
-                byte[] data = outputStream.toByteArray();
-
-                db.open();
-                db.insertRecord(titleTyped, contentTyped, data);
-                db.close();
-
-                db1.open();
-                db1.insertRecord(titleTyped, contentTyped, data);
-                db1.close();
-
-                Toast.makeText(getActivity(), "Post loaded successfully.", Toast.LENGTH_SHORT).show();
-
-                Fragment fragment = UserFragment.newInstance();
-
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, fragment).commit();
-            }
-        });
         // Inflate the layout for this fragment
         return view;
+    }
+
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+        Dialog dialog = getDialog();
+        if (dialog != null)
+        {
+            int width = ViewGroup.LayoutParams.MATCH_PARENT;
+            int height = ViewGroup.LayoutParams.MATCH_PARENT;
+            dialog.getWindow().setLayout(width, height);
+        }
     }
 
     @Override
@@ -149,6 +191,13 @@ public class AddPostFragment extends Fragment {
         } catch (Exception e) {
             System.out.println("Failed to upload image");
         }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // TODO Add your menu entries here
+        inflater.inflate(R.menu.activity_main_actions, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     public interface OnFragmentInteractionListener {
