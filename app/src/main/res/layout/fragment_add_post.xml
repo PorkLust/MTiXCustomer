@@ -43,11 +43,12 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#FFEB3B"
+                    android:background="@drawable/roundedbutton"
                     android:layout_marginRight="15dp"
                     android:text="POST"
                     android:textSize="15sp"
-                    android:id="@+id/btn_post"/>
+                    android:id="@+id/btn_post"
+                    />
                 </LinearLayout>
 
             </LinearLayout>
