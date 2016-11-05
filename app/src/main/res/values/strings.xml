@@ -19,10 +19,18 @@
     <string name="slide_3_title">Great Discounts</string>
     <string name="slide_3_desc">Best discounts on every single service we offer!</string>
 
+    <string name="slide_4_title">Great Discounts</string>
+    <string name="slide_4_desc">Best discounts on every single service we offer!</string>
+
+    <string name="slide_5_title">Great Discounts</string>
+    <string name="slide_5_desc">Best discounts on every single service we offer!</string>
+
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps_arena">Map</string>
+    <string name="title_activity_maps_atria">Map</string>
 
 </resources>

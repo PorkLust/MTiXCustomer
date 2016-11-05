@@ -1,7 +1,6 @@
 package sg.edu.nus.mtix;
 
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -18,11 +17,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -39,6 +38,8 @@ public class AddPostFragment extends DialogFragment {
     private ImageView imageView;
     String imgDecodableString = "";
     Toolbar toolbar;
+    Button postBtn;
+    ImageButton closeBtn;
     MyPostDB db;
     AllPostDB db1;
 
@@ -54,7 +55,8 @@ public class AddPostFragment extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(AddPostFragment.STYLE_NO_TITLE, R.style.PopupTheme);
+        setStyle(AddPostFragment.STYLE_NO_TITLE, R.style.DialogSlideAnim);
+
         setHasOptionsMenu(true);
 
         db = new MyPostDB(getActivity());
@@ -77,7 +79,49 @@ public class AddPostFragment extends DialogFragment {
         imageView = (ImageView) view.findViewById(R.id.imageViewDesc);
 
         toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+        postBtn = (Button) view.findViewById(R.id.btn_post);
+        closeBtn = (ImageButton)view.findViewById(R.id.btn_back);
+        toolbar.setNavigationOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                String titleTyped = title.getText().toString();
+                String contentTyped = content.getText().toString();
+                Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+
+                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 0, outputStream);
+                byte[] data = outputStream.toByteArray();
+
+                db.open();
+                db.insertRecord(titleTyped, contentTyped, data);
+                db.close();
+
+                db1.open();
+                db1.insertRecord(titleTyped, contentTyped, data);
+                db1.close();
+
+                Toast.makeText(getActivity(), "Post loaded successfully.", Toast.LENGTH_SHORT).show();
+
+                Fragment fragment = UserFragment.newInstance();
+
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, fragment).commit();
+
+                dismiss();
+            }
+        });
+
+        closeBtn.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction fragmentTransaction =  getActivity().getSupportFragmentManager().beginTransaction();
+                Fragment homeFragment = new HomeFragment();
+                fragmentTransaction.replace(R.id.frameLayout, homeFragment, "homeFragment");
+                fragmentTransaction.addToBackStack("homeFragment");
+                fragmentTransaction.commit();
+                dismiss();
+            }
+        });
+        /*toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 int id = item.getItemId();
@@ -119,8 +163,8 @@ public class AddPostFragment extends DialogFragment {
                         return false;
                 }
             }
-        });
-        toolbar.inflateMenu(R.menu.activity_main_actions);
+        });*/
+       // toolbar.inflateMenu(R.menu.activity_main_actions);
 
         Button uploadImageBtn = (Button) view.findViewById(R.id.button2);
         uploadImageBtn.setOnClickListener(new View.OnClickListener() {
@@ -135,7 +179,7 @@ public class AddPostFragment extends DialogFragment {
         return view;
     }
 
-    @Override
+    /*@Override
     public void onStart()
     {
         super.onStart();
@@ -146,7 +190,7 @@ public class AddPostFragment extends DialogFragment {
             int height = ViewGroup.LayoutParams.MATCH_PARENT;
             dialog.getWindow().setLayout(width, height);
         }
-    }
+    }*/
 
     @Override
     public void onAttach(Context context) {
@@ -196,7 +240,7 @@ public class AddPostFragment extends DialogFragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         // TODO Add your menu entries here
-        inflater.inflate(R.menu.activity_main_actions, menu);
+        //inflater.inflate(R.menu.activity_main_actions, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 

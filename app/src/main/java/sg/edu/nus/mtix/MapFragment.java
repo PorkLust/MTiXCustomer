@@ -39,7 +39,7 @@ public class MapFragment extends Fragment  {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ((MainActivity)getActivity()).setActionBarTitle("");
+        ((MainActivity)getActivity()).setActionBarTitle("Venues");
         View view = inflater.inflate(R.layout.fragment_map, container, false);
         tvStarTheatre = (TextView) view.findViewById(R.id.textView1);
         tvStarArena = (TextView) view.findViewById(R.id.textView2);

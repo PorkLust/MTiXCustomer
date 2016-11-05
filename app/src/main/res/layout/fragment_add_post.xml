@@ -16,11 +16,43 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:src="@drawable/toolbar_close"
+                    android:id="@+id/btn_back"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#FFEB3B"
+                    android:layout_marginRight="15dp"
+                    android:text="POST"
+                    android:textSize="15sp"
+                    android:id="@+id/btn_post"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.Toolbar>
 
 
 
@@ -52,6 +84,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="#000000"
                     android:id="@+id/titleInput" />
 
                 <ScrollView
@@ -64,6 +97,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/contentInput"
                         android:hint="Relive moments from..."
+                        android:textColor="#000000"
                         android:background="@null"
                         android:textSize="16sp"/>
                 </ScrollView>

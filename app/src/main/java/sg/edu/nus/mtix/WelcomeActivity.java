@@ -42,7 +42,7 @@ public class WelcomeActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
-
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_welcome);
 
         viewPager = (ViewPager) findViewById(R.id.viewPager);
@@ -56,7 +56,9 @@ public class WelcomeActivity extends AppCompatActivity {
         layouts = new int[]{
                 R.layout.welcome_slide1,
                 R.layout.welcome_slide2,
-                R.layout.welcome_slide3};
+                R.layout.welcome_slide3,
+                R.layout.welcome_slide4,
+                R.layout.welcome_slide5};
 
         // adding bottom dots
         addBottomDots(0);
