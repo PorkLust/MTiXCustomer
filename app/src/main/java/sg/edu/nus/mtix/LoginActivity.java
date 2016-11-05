@@ -10,8 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -34,9 +37,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onClick_Login(View view){
-//        Intent myIntent = new Intent (this,MainActivity.class);
-//        startActivity(myIntent);
-       String username = editText_username.getText().toString();
+        Intent myIntent = new Intent (this,MainActivity.class);
+        startActivity(myIntent);
+       /* String username = editText_username.getText().toString();
         String password = editText_password.getText().toString();
         errorMsg = (TextView)findViewById(R.id.login_error);
         RequestParams params = new RequestParams();
