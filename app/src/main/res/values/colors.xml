@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#9575CD</color>
+    <color name="colorPrimary">#F5F5F5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#1565C0</color>
     <color name="white">#FFFFFF</color>
     <color name="grey">#C7C7C7</color>
     <color name="greyblue">#F5F5F5</color>
     <color name="colorPrimaryLight">#9575CD</color>
-    <color name="colorText">#FFFFFF</color>
+    <color name="colorText">#424242</color>
     <color name="colorIcon">#FFFFFF</color>
+    <color name="normblue">#3F51B5</color>
 
     <!-- dots inactive colors -->
     <color name="dot_dark_screen">#757575</color>

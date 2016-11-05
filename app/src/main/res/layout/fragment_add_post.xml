@@ -27,26 +27,53 @@
                 android:orientation="horizontal"
                 >
 
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:src="@drawable/toolbar_close"
-                    android:id="@+id/btn_back"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    >
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/toolbar_close"
+                        android:background="@null"
+                        android:id="@+id/btn_back"/>
+
+                </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:orientation="horizontal" >
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/newPost"
+                        android:gravity="center"
+                        android:textColor="@color/colorText"
+                        android:textSize="18sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="right">
+
 
                     <Button
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#FFEB3B"
-                        android:layout_marginRight="15dp"
-                        android:text="POST"
-                        android:textSize="15sp"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:text="Share"
+                        android:textColor="@color/normblue"
+                        android:textSize="18sp"
                         android:id="@+id/btn_post"/>
                 </LinearLayout>
 
@@ -62,10 +89,11 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:textColor="#000000"
                 android:id="@+id/titleInput"
                 android:hint="Title/Event"
+                android:paddingLeft="5dp"
                 android:background="@drawable/rectangebox"/>
         </LinearLayout>
 
@@ -78,18 +106,19 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.3"
-                android:layout_marginRight="15dp"
+                android:layout_weight="0.36"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="120dp"
+                    android:layout_width="110dp"
                     android:layout_height="120dp"
                     android:id="@+id/imageViewDesc"
                     android:background="@drawable/rectangebox"/>
 
                 <Button
-                    android:layout_width="120dp"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:text="Upload Image"
                     android:id="@+id/button2"
@@ -117,7 +146,8 @@
                         android:hint="Relive moments from..."
                         android:background="@null"
                         android:textColor="#000000"
-                        android:textSize="16sp"/>
+                        android:paddingLeft="5dp"
+                        android:textSize="17sp"/>
                 </ScrollView>
             </LinearLayout>
         </LinearLayout>
