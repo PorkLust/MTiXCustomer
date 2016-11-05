@@ -81,7 +81,7 @@ public class AddPostFragment extends DialogFragment {
         toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         postBtn = (Button) view.findViewById(R.id.btn_post);
         closeBtn = (ImageButton)view.findViewById(R.id.btn_back);
-        toolbar.setNavigationOnClickListener( new View.OnClickListener(){
+        postBtn.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 String titleTyped = title.getText().toString();

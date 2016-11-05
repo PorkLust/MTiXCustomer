@@ -38,12 +38,18 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity
-            android:name=".MapsActivity"
+            android:name=".MapsTheatreActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".QRDB" />
         <activity android:name=".DBHelper" />
+        <activity
+            android:name=".MapsArenaActivity"
+            android:label="@string/title_activity_maps_arena" />
+        <activity
+            android:name=".MapsAtriaActivity"
+            android:label="@string/title_activity_maps_atria"></activity>
     </application>
 
 </manifest>
