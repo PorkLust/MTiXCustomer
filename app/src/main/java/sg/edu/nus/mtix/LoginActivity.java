@@ -37,8 +37,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onClick_Login(View view){
-        Intent myIntent = new Intent (this,MainActivity.class);
-        startActivity(myIntent);
+        /*Intent myIntent = new Intent (this,MainActivity.class);
+        startActivity(myIntent);*/
         String username = editText_username.getText().toString();
         String password = editText_password.getText().toString();
         errorMsg = (TextView)findViewById(R.id.login_error);
