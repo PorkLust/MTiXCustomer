@@ -5,6 +5,7 @@
     <string name="login">Log In</string>
     <string name="email">EMAIL</string>
     <string name="password">PASSWORD</string>
+    <string name="newPost">New Post</string>
 
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
