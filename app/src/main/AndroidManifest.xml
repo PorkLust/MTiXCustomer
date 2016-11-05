@@ -50,6 +50,8 @@
         <activity
             android:name=".MapsAtriaActivity"
             android:label="@string/title_activity_maps_atria"></activity>
+
+        <receiver android:name=".MyReceiver"></receiver>
     </application>
 
 </manifest>
