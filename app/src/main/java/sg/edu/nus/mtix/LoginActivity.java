@@ -10,11 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -57,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         } else{
             Toast.makeText(getApplicationContext(), "Please fill the form, don't leave any field blank", Toast.LENGTH_LONG).show();
-        }
+        }*/
     }
 
     public void invokeWS(RequestParams params){
@@ -76,8 +73,8 @@ public class LoginActivity extends AppCompatActivity {
                     // JSON Object
                     //JSONObject obj = response;
                     // When the JSON response has status boolean value assigned with true
-                    String result = new String(response, "UTF-8")
-                    if(response.equals("true")){
+                    String result = new String(response, "UTF-8");
+                    if(result.equals("true")){
 
                         // one min.
                         Toast.makeText(getApplicationContext(), "You are successfully logged in!", Toast.LENGTH_LONG).show();
