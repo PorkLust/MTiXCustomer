@@ -10,11 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -37,9 +34,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onClick_Login(View view){
-        Intent myIntent = new Intent (this,MainActivity.class);
-        startActivity(myIntent);
-       /* String username = editText_username.getText().toString();
+//        Intent myIntent = new Intent (this,MainActivity.class);
+//        startActivity(myIntent);
+       String username = editText_username.getText().toString();
         String password = editText_password.getText().toString();
         errorMsg = (TextView)findViewById(R.id.login_error);
         RequestParams params = new RequestParams();
@@ -57,34 +54,39 @@ public class LoginActivity extends AppCompatActivity {
             }
         } else{
             Toast.makeText(getApplicationContext(), "Please fill the form, don't leave any field blank", Toast.LENGTH_LONG).show();
-        } */
+        }
     }
 
     public void invokeWS(RequestParams params){
         // Show Progress Dialog
         prgDialog.show();
         // Make RESTful webservice call using AsyncHttpClient object
+
+
         AsyncHttpClient client = new AsyncHttpClient();
-        client.post("http://172.25.97.151:8080/MTiXBackend/webresources/mtixwebservice/login",params ,new JsonHttpResponseHandler() {
+        client.post("http://10.0.2.2:8080/MTiXBackend/webresources/mtixwebservice/login",params ,new AsyncHttpResponseHandler() {
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+            public void onSuccess(int statusCode, Header[] headers, byte[] response) {
                 prgDialog.hide();
                 try {
                     // JSON Object
-                    JSONObject obj = response;
+                    //JSONObject obj = response;
                     // When the JSON response has status boolean value assigned with true
-                    if(obj.getBoolean("status")){
+                    String result = new String(response, "UTF-8")
+                    if(response.equals("true")){
+
+                        // one min.
                         Toast.makeText(getApplicationContext(), "You are successfully logged in!", Toast.LENGTH_LONG).show();
                         // Navigate to Home screen
                         navigateToHomeActivity();
                     }
                     // Else display error message
                     else{
-                        errorMsg.setText(obj.getString("error_msg"));
-                        Toast.makeText(getApplicationContext(), obj.getString("error_msg"), Toast.LENGTH_LONG).show();
+                        errorMsg.setText("Invalid");
+                       // Toast.makeText(getApplicationContext(), obj.getString("error_msg"), Toast.LENGTH_LONG).show();
                     }
-                } catch (JSONException e) {
+                } catch (Exception e) {
                     // TODO Auto-generated catch block
                     Toast.makeText(getApplicationContext(), "Error Occured [Server's JSON response might be invalid]!", Toast.LENGTH_LONG).show();
                     e.printStackTrace();
@@ -93,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject response) {
+            public void onFailure(int statusCode, Header[] headers, byte[] response, Throwable throwable) {
                 // Hide Progress Dialog
                 prgDialog.hide();
                 // When Http response code is '404'
