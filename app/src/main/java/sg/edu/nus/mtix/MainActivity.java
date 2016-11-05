@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements HomeFragment.OnFragmentInteractionListener,
         QRCodeFragment.OnFragmentInteractionListener, MapFragment.OnFragmentInteractionListener, UserFragment.OnFragmentInteractionListener
@@ -19,6 +21,10 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnFr
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        actionBar.setCustomView(R.layout.actionbar);
+
         setContentView(R.layout.activity_main);
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -44,7 +50,10 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnFr
                         fragment = UserFragment.newInstance();
                         break;
                     case R.id.menu_addpost:
-                        fragment = AddPostFragment.newInstance();
+                        FragmentManager fm = getSupportFragmentManager();
+                        AddPostFragment postFragment = new AddPostFragment ();
+                        postFragment.show(fm, "Sample Fragment");
+                        //fragment = AddPostFragment.newInstance();
                         break;
                 }
                 if (fragment != null) {
@@ -57,12 +66,11 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnFr
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.activity_main_actions, menu);
 
-        return super.onCreateOptionsMenu(menu);
+    public void setActionBarTitle(String title) {
+        View v = getSupportActionBar().getCustomView();
+        TextView titleTxtView = (TextView) v.findViewById(R.id.actionBarTitle);
+        titleTxtView.setText(title);
     }
 
     public void onFragmentInteraction(String str){

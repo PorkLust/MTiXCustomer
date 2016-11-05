@@ -10,12 +10,18 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -25,12 +31,15 @@ import java.io.ByteArrayOutputStream;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AddPostFragment extends Fragment {
+public class AddPostFragment extends DialogFragment {
 
     private EditText title;
     private EditText content;
     private ImageView imageView;
     String imgDecodableString = "";
+    Toolbar toolbar;
+    Button postBtn;
+    ImageButton closeBtn;
     MyPostDB db;
     AllPostDB db1;
 
@@ -46,6 +55,9 @@ public class AddPostFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStyle(AddPostFragment.STYLE_NO_TITLE, R.style.DialogSlideAnim);
+
+        setHasOptionsMenu(true);
 
         db = new MyPostDB(getActivity());
         db1 = new AllPostDB(getActivity());
@@ -66,17 +78,10 @@ public class AddPostFragment extends Fragment {
         content = (EditText) view.findViewById(R.id.contentInput);
         imageView = (ImageView) view.findViewById(R.id.imageViewDesc);
 
-        Button uploadImageBtn = (Button) view.findViewById(R.id.button2);
-        uploadImageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent myIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(myIntent, RESULT_LOAD_IMG);
-            }
-        });
-
-        Button uploadPostBtn = (Button) view.findViewById(R.id.button3);
-        uploadPostBtn.setOnClickListener(new View.OnClickListener() {
+        toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        postBtn = (Button) view.findViewById(R.id.btn_post);
+        closeBtn = (ImageButton)view.findViewById(R.id.btn_back);
+        postBtn.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 String titleTyped = title.getText().toString();
@@ -100,11 +105,92 @@ public class AddPostFragment extends Fragment {
                 Fragment fragment = UserFragment.newInstance();
 
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, fragment).commit();
+
+                dismiss();
             }
         });
+
+        closeBtn.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction fragmentTransaction =  getActivity().getSupportFragmentManager().beginTransaction();
+                Fragment homeFragment = new HomeFragment();
+                fragmentTransaction.replace(R.id.frameLayout, homeFragment, "homeFragment");
+                fragmentTransaction.addToBackStack("homeFragment");
+                fragmentTransaction.commit();
+                dismiss();
+            }
+        });
+        /*toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                int id = item.getItemId();
+                switch(id) {
+                    case R.id.action_post:
+                        String titleTyped = title.getText().toString();
+                        String contentTyped = content.getText().toString();
+                        Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+
+                        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 0, outputStream);
+                        byte[] data = outputStream.toByteArray();
+
+                        db.open();
+                        db.insertRecord(titleTyped, contentTyped, data);
+                        db.close();
+
+                        db1.open();
+                        db1.insertRecord(titleTyped, contentTyped, data);
+                        db1.close();
+
+                        Toast.makeText(getActivity(), "Post loaded successfully.", Toast.LENGTH_SHORT).show();
+
+                        Fragment fragment = UserFragment.newInstance();
+
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, fragment).commit();
+
+                        dismiss();
+                        return true;
+                    case R.id.action_back:
+                        FragmentTransaction fragmentTransaction =  getActivity().getSupportFragmentManager().beginTransaction();
+                        Fragment homeFragment = new HomeFragment();
+                        fragmentTransaction.replace(R.id.frameLayout, homeFragment, "homeFragment");
+                        fragmentTransaction.addToBackStack("homeFragment");
+                        fragmentTransaction.commit();
+                        dismiss();
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });*/
+       // toolbar.inflateMenu(R.menu.activity_main_actions);
+
+        Button uploadImageBtn = (Button) view.findViewById(R.id.button2);
+        uploadImageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(myIntent, RESULT_LOAD_IMG);
+            }
+        });
+
         // Inflate the layout for this fragment
         return view;
     }
+
+    /*@Override
+    public void onStart()
+    {
+        super.onStart();
+        Dialog dialog = getDialog();
+        if (dialog != null)
+        {
+            int width = ViewGroup.LayoutParams.MATCH_PARENT;
+            int height = ViewGroup.LayoutParams.MATCH_PARENT;
+            dialog.getWindow().setLayout(width, height);
+        }
+    }*/
 
     @Override
     public void onAttach(Context context) {
@@ -149,6 +235,13 @@ public class AddPostFragment extends Fragment {
         } catch (Exception e) {
             System.out.println("Failed to upload image");
         }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // TODO Add your menu entries here
+        //inflater.inflate(R.menu.activity_main_actions, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     public interface OnFragmentInteractionListener {

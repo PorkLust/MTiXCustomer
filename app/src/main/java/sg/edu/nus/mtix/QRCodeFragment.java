@@ -77,6 +77,7 @@ public class QRCodeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        ((MainActivity)getActivity()).setActionBarTitle("QR Code");
         View view = inflater.inflate(R.layout.fragment_qrcode, container, false);
         // Inflate the layout for this fragment
         imageView = (ImageView) view.findViewById(R.id.imageView_QRCode);

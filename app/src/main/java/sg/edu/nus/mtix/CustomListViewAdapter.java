@@ -45,6 +45,8 @@ public class CustomListViewAdapter extends ArrayAdapter<RowItem> {
             holder = (ViewHolder) convertView.getTag();
         }
 
+        holder.image.setImageDrawable(null);
+
         holder.titleDisplay.setText("Title: " + rowItem.getTitle());
         holder.descriptionDisplay.setText(rowItem.getDesc());
         holder.image.setImageBitmap(BitmapFactory.decodeByteArray(rowItem.getImage(), 0, (rowItem.getImage().length)));

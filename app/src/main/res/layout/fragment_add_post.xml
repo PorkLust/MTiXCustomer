@@ -5,44 +5,103 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="sg.edu.nus.mtix.AddPostFragment">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="#E0E0E0">
 
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:src="@drawable/toolbar_close"
+                    android:id="@+id/btn_back"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#FFEB3B"
+                    android:layout_marginRight="15dp"
+                    android:text="POST"
+                    android:textSize="15sp"
+                    android:id="@+id/btn_post"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+
+
         <!-- TODO: Update blank fragment layout -->
         <LinearLayout
             android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="20"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="30dp"
             android:background="@android:color/white">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Title/Event: "
-                android:id="@+id/title"
-                android:textColor="#000000"/>
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="7"
+                android:orientation="vertical"
+                android:layout_below="@+id/linearLayout1">
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/titleInput" />
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Title/Event:"
+                    android:id="@+id/title"
+                    android:textColor="#000000"/>
 
-        <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="70"
-            android:orientation="horizontal"
-            android:layout_below="@+id/linearLayout1">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:id="@+id/titleInput" />
 
+                <ScrollView
+                    android:id="@+id/scrollView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/contentInput"
+                        android:hint="Relive moments from..."
+                        android:textColor="#000000"
+                        android:background="@null"
+                        android:textSize="16sp"/>
+                </ScrollView>
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -60,26 +119,10 @@
                     android:text="Upload Image"
                     android:id="@+id/button2"
                     android:onClick="onClick_LoadImageFromGallery"/>
-
-
             </LinearLayout>
-
-            <ScrollView
-                android:id="@+id/scrollView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/contentInput"
-                    android:hint="Relive moments from..."
-                    android:background="@null"
-                    android:textSize="16sp"/>
-            </ScrollView>
         </LinearLayout>
 
-        <LinearLayout
+        <!--<LinearLayout
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -92,9 +135,7 @@
                 android:text="Post"
                 android:id="@+id/button3"
                 android:onClick="onClick_Post"/>
-        </LinearLayout>
+        </LinearLayout>-->
 
     </LinearLayout>
-
-
 </FrameLayout>
