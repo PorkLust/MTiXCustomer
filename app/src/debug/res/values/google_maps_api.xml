@@ -18,7 +18,7 @@
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyD2KsLTpdK4Xo_6QbobidPSUAp9MV-L7mI</string>
 
 
-    <!-- jas key
+    <!-- jas
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyDVhlb68yfzonOlwcW5DZbHfI2hTEP5N8s</string>
-    -->
+-->
 </resources>
