@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -85,6 +86,8 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnFr
     public void setActionBarTitle(String title) {
         View v = getSupportActionBar().getCustomView();
         TextView titleTxtView = (TextView) v.findViewById(R.id.actionBarTitle);
+        Typeface custom_font = Typeface.createFromAsset(getApplicationContext().getAssets(),  "fonts/ProximaNovaSoft-Bold.otf");
+        titleTxtView.setTypeface(custom_font);
         titleTxtView.setText(title);
     }
 

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context="sg.edu.nus.mtix.LoginActivity">
 
 
@@ -11,16 +12,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/login"
         android:id="@+id/textView3" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="30dp">
+        android:padding="8dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -58,14 +58,14 @@
     </LinearLayout>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/login"
         android:textColor="@color/white"
-        android:background="@color/greyblue"
+        android:background="@drawable/round_corners"
         android:id="@+id/button"
         android:layout_gravity="center_horizontal"
-        android:onClick="onClick_Login"/>
-
+        android:onClick="onClick_Login"
+        />
 
 </LinearLayout>

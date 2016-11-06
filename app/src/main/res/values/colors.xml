@@ -4,12 +4,13 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#1565C0</color>
     <color name="white">#FFFFFF</color>
-    <color name="grey">#C7C7C7</color>
+    <color name="grey">#9E9E9E</color>
     <color name="greyblue">#F5F5F5</color>
     <color name="colorPrimaryLight">#9575CD</color>
     <color name="colorText">#424242</color>
     <color name="colorIcon">#FFFFFF</color>
-    <color name="normblue">#3F51B5</color>
+    <color name="niceBlue">#55ACEE</color>
+    <color name="colorPost">#212121</color>
 
     <!-- dots inactive colors -->
     <color name="dot_dark_screen">#757575</color>

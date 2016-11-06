@@ -66,7 +66,7 @@ public class QRCodeFragment extends Fragment {
         }
 
         db.close();
-        imageView.setImageBitmap(BitmapFactory.decodeByteArray(qrCode, 0, qrCode.length));
+       // imageView.setImageBitmap(BitmapFactory.decodeByteArray(qrCode, 0, qrCode.length));
     }
 
     public QRCodeFragment() {
@@ -81,7 +81,7 @@ public class QRCodeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_qrcode, container, false);
         // Inflate the layout for this fragment
         imageView = (ImageView) view.findViewById(R.id.imageView_QRCode);
-        getQRCode();
+       // getQRCode();
         return view;
     }
 

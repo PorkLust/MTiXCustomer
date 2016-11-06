@@ -5,14 +5,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
+    android:gravity="center"
     tools:context="sg.edu.nus.mtix.SplashActivity">
 
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/ic_app"
+        android:src="@drawable/ic_splash"
         android:id="@+id/imageView"
-        android:padding="50dp"/>
+        android:padding="100dp"/>
 
 </LinearLayout>

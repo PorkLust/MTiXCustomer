@@ -54,6 +54,10 @@ public class UserFragment extends Fragment {
         ((MainActivity)getActivity()).setActionBarTitle("Profile");
         View view = inflater.inflate(R.layout.fragment_user, container, false);
         listview = (ListView) view.findViewById(R.id.listview);
+       // View headerview = ((LayoutInflater)getContext().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.headerview, null, false);
+        ViewGroup headerview = (ViewGroup) inflater.inflate(R.layout.headerview, listview,
+                false);
+        listview.addHeaderView(headerview,null,false);
         rowItems = new ArrayList<RowItem>();
 
         db = new MyPostDB(getActivity());
