@@ -62,7 +62,7 @@ public class HomeFragment extends Fragment {
 
         addDummyRecord();
 
-        initialise(); //initialise title, description, images
+        initialise(); //initialise title, description, images, names
 
         for (int i = titles.length-1; i >= 0; i--) {
             RowItem item = new RowItem(titles[i], descriptions[i], images.get(i), names[i]);
@@ -105,8 +105,8 @@ public class HomeFragment extends Fragment {
         descriptions = new String[adescriptions.size()];
         descriptions = adescriptions.toArray(descriptions);
 
-        names = new String[atitles.size()];
-        names = adescriptions.toArray(names);
+        names = new String[anames.size()];
+        names = anames.toArray(names);
     }
 
     @Override
