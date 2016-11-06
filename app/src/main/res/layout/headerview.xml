@@ -17,20 +17,23 @@
         android:layout_height="match_parent"
         android:layout_weight="6.5"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"
-            android:gravity="center"
+            android:layout_weight="1"
             android:text="hello"
+            android:gravity="left"
+            android:paddingTop="20dp"
             android:textSize="20sp"
+            android:textColor="@color/colorPost"
             android:id="@+id/textviewProfile"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="7"
-            android:gravity="center"
+            android:layout_weight="1"
+            android:gravity="left"
             android:text="@string/profileDesc"/>
     </LinearLayout>
 
