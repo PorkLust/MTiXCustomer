@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorPost"
             android:textSize="15sp"
+            android:id="@+id/textViewName"
             />
 
     </LinearLayout>

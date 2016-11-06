@@ -26,6 +26,7 @@ public class CustomListViewAdapter extends ArrayAdapter<RowItem> {
         ImageView image;
         TextView titleDisplay;
         TextView descriptionDisplay;
+        TextView nameDisplay;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -40,15 +41,13 @@ public class CustomListViewAdapter extends ArrayAdapter<RowItem> {
             holder = new ViewHolder();
             holder.titleDisplay = (TextView) convertView.findViewById(R.id.textViewTitle);
             holder.descriptionDisplay = (TextView) convertView.findViewById(R.id.textViewDescription);
+            holder.nameDisplay = (TextView) convertView.findViewById(R.id.textViewName);
             Typeface custom_font = Typeface.createFromAsset(getContext().getApplicationContext().getAssets(),  "fonts/ProximaNovaSoft-Bold.otf");
             Typeface custom_font2 = Typeface.createFromAsset(getContext().getApplicationContext().getAssets(),  "fonts/ProximaNovaSoft-Regular.otf");
             holder.titleDisplay.setTypeface(custom_font);
             holder.descriptionDisplay.setTypeface(custom_font2);
             holder.image = (ImageView) convertView.findViewById(R.id.imageViewCustom);
 
-            //holder.image.setImageDrawable(null);
-            //holder.image.setImageBitmap(null);
-            //holder.image.destroyDrawingCache();
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -60,6 +59,7 @@ public class CustomListViewAdapter extends ArrayAdapter<RowItem> {
 
         holder.titleDisplay.setText("Title: " + rowItem.getTitle());
         holder.descriptionDisplay.setText(rowItem.getDesc());
+        holder.nameDisplay.setText(rowItem.getName());
         holder.image.setImageBitmap(BitmapFactory.decodeByteArray(rowItem.getImage(), 0, (rowItem.getImage().length)));
 
         //holder.image.destroyDrawingCache();

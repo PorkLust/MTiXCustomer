@@ -30,7 +30,7 @@ public class MyPostDB {
         initialValues.put(DBHelper.columnName4, title);
         initialValues.put(DBHelper.columnName5, content);
         initialValues.put(DBHelper.columnName6, data);
-        initialValues.put(DBHelper.columnName12, data);
+        initialValues.put(DBHelper.columnName12, name);
 
         return db.insert(DBHelper.myPostTable, null, initialValues);
     }

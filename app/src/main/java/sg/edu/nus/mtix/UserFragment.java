@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +58,15 @@ public class UserFragment extends Fragment {
        // View headerview = ((LayoutInflater)getContext().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.headerview, null, false);
         ViewGroup headerview = (ViewGroup) inflater.inflate(R.layout.headerview, listview,
                 false);
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String key = pref.getString("name", null);
+
+        TextView profileName = (TextView) headerview.findViewById(R.id.textviewProfile);
+        profileName.setText(key);
+
         listview.addHeaderView(headerview,null,false);
+
+
         rowItems = new ArrayList<RowItem>();
 
         db = new MyPostDB(getActivity());
@@ -76,13 +85,6 @@ public class UserFragment extends Fragment {
         return view;
     }
 
-    /*
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast toast = Toast.makeText(getActivity(), "Post " + (position + 1) + "  |  " + rowItems.get(position), Toast.LENGTH_SHORT);
-        toast.show();
-    } */
-
     //initialise title, description, image
     public void initialise() {
         db.open();
@@ -93,7 +95,6 @@ public class UserFragment extends Fragment {
         ArrayList<String> anames = new ArrayList<String>();
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String key = pref.getString("name", null);
-
 
         if (c.moveToFirst()) {
             do {

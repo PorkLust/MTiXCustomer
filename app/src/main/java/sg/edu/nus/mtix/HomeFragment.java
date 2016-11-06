@@ -56,25 +56,11 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         listview = (ListView) view.findViewById(R.id.listview1);
 
-        /*
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(AdapterView<?> adapter, View v, int position,
-                                    long arg3)
-            {
-
-                //String value = (String)adapter.getItemAtPosition(position);
-                // assuming string and if you want to get the value on click of list item
-                // do what you intend to do on click of listview row
-                RowItem row = rowItems.get(position);
-            }
-        }); */
         rowItems = new ArrayList<RowItem>();
 
         db = new AllPostDB(getActivity());
 
-        //addDummyRecord();
+        addDummyRecord();
 
         initialise(); //initialise title, description, images
 
@@ -103,11 +89,11 @@ public class HomeFragment extends Fragment {
 
         if (c.moveToFirst()) {
             do {
-                String[] record = {c.getString(0), c.getString(1)}; //title, description
+                String[] record = {c.getString(0), c.getString(1), c.getString(3)}; //title, description, name
                 atitles.add(record[0]);
                 adescriptions.add(record[1]);
                 images.add(c.getBlob(2));
-                anames.add(key);
+                anames.add(record[2]);
             } while (c.moveToNext());
         }
         db.close();
