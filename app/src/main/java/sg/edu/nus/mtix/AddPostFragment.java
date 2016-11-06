@@ -97,7 +97,7 @@ public class AddPostFragment extends DialogFragment {
                 Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
 
                 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 0, outputStream);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 80, outputStream);
                 byte[] data = outputStream.toByteArray();
 
                 SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -192,9 +192,7 @@ public class AddPostFragment extends DialogFragment {
                 //set image in imageview after decoding the string
 
                 Bitmap bitmapImage = BitmapFactory.decodeFile(imgDecodableString);
-                /*ByteArrayOutputStream out = new ByteArrayOutputStream();
-                original.compress(Bitmap.CompressFormat.PNG, 100, out);
-                Bitmap decoded = BitmapFactory.decodeStream(new ByteArrayInputStream(out.toByteArray()));*/
+
                 int nh = (int) ( bitmapImage.getHeight() * (512.0 / bitmapImage.getWidth()) );
                 Bitmap scaled = Bitmap.createScaledBitmap(bitmapImage, 512, nh, true);
                 imageView.setImageBitmap(scaled);
