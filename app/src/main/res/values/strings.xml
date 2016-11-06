@@ -14,17 +14,17 @@
     <string name="slide_1_title">Welcome to</string>
     <string name="slide_1_desc">Now entertainment is right at your fingertips.</string>
 
-    <string name="slide_2_title">Movie Tickets</string>
-    <string name="slide_2_desc">Book movie tickets for your family and friends!</string>
+    <string name="slide_2_title">Locations</string>
+    <string name="slide_2_desc">MTiX provides various routes to your event destination.</string>
 
-    <string name="slide_3_title">Great Discounts</string>
-    <string name="slide_3_desc">Best discounts on every single service we offer!</string>
+    <string name="slide_3_title">QR Code</string>
+    <string name="slide_3_desc">Scanning QR code brings you one step closer to your event destination.</string>
 
-    <string name="slide_4_title">Great Discounts</string>
-    <string name="slide_4_desc">Best discounts on every single service we offer!</string>
+    <string name="slide_4_title">Share Post</string>
+    <string name="slide_4_desc">MTiX allows you to jot down and share your amazing experiences.</string>
 
-    <string name="slide_5_title">Great Discounts</string>
-    <string name="slide_5_desc">Best discounts on every single service we offer!</string>
+    <string name="slide_5_title">Profile</string>
+    <string name="slide_5_desc">MTiX provides you your page for future viewing.</string>
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
