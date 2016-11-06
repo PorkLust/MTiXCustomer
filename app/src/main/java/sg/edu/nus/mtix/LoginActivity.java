@@ -2,7 +2,9 @@ package sg.edu.nus.mtix;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -36,9 +38,9 @@ public class LoginActivity extends AppCompatActivity {
     public void onClick_Login(View view){
         Intent myIntent = new Intent (this,MainActivity.class);
         startActivity(myIntent);
-       /* String username = editText_username.getText().toString();
+        String username = editText_username.getText().toString();
         String password = editText_password.getText().toString();
-        errorMsg = (TextView)findViewById(R.id.login_error);
+        /*errorMsg = (TextView)findViewById(R.id.login_error);
         RequestParams params = new RequestParams();
 
         if(Utility.isNotNull(username) && Utility.isNotNull(password)){
@@ -55,14 +57,14 @@ public class LoginActivity extends AppCompatActivity {
         } else{
             Toast.makeText(getApplicationContext(), "Please fill the form, don't leave any field blank", Toast.LENGTH_LONG).show();
         }
-
+        */
 
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor = pref.edit();
         String[] arr = username.split("@");
         editor.putString("name", arr[0]);
         editor.commit(); //save changes in SharedPreferences
-*/
+
     }
 
     public void invokeWS(RequestParams params){
@@ -72,9 +74,9 @@ public class LoginActivity extends AppCompatActivity {
 
 
         AsyncHttpClient client = new AsyncHttpClient();
-       // client.post("http://10.0.2.2:8080/MTiXBackend/webresources/mtixwebservice/login",params ,new AsyncHttpResponseHandler() {
+        client.post("http://10.0.2.2:8080/MTiXBackend/webresources/mtixwebservice/login",params ,new AsyncHttpResponseHandler() {
             //client.post("http://172.25.101.71:8080/MTiXBackend/webresources/mtixwebservice/login",params ,new AsyncHttpResponseHandler() {
-        client.post("http://172.20.10.2:8080/MTiXBackend/webresources/mtixwebservice/login",params ,new AsyncHttpResponseHandler() {
+       // client.post("http://172.20.10.2:8080/MTiXBackend/webresources/mtixwebservice/login",params ,new AsyncHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] response) {
