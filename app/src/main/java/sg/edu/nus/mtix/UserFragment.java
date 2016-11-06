@@ -117,8 +117,8 @@ public class UserFragment extends Fragment {
         descriptions = new String[adescriptions.size()];
         descriptions = adescriptions.toArray(descriptions);
 
-        names = new String[atitles.size()];
-        names = adescriptions.toArray(names);
+        names = new String[anames.size()];
+        names = anames.toArray(names);
     }
 
     @Override
