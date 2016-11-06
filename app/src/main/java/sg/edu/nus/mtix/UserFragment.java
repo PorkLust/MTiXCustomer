@@ -2,8 +2,10 @@ package sg.edu.nus.mtix;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,7 @@ import java.util.List;
 public class UserFragment extends Fragment {
     public static String[] titles;
     public static String[] descriptions;
+    public static String[] names;
     public static ArrayList<byte[]> images = new ArrayList<byte[]>();
 
     MyPostDB db;
@@ -59,7 +62,7 @@ public class UserFragment extends Fragment {
 
         for (int i = titles.length-1; i >= 0; i--) {
             //for (int i = 0; i < titles.length; i++) {
-            RowItem item = new RowItem(titles[i], descriptions[i], images.get(i));
+            RowItem item = new RowItem(titles[i], descriptions[i], images.get(i), names[i]);
             rowItems.add(item);
         }
 
@@ -83,6 +86,10 @@ public class UserFragment extends Fragment {
         Cursor c = db.getAllRecords();
         ArrayList<String> atitles = new ArrayList<String>();
         ArrayList<String> adescriptions = new ArrayList<String>();
+        ArrayList<String> anames = new ArrayList<String>();
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String key = pref.getString("name", null);
+
 
         if (c.moveToFirst()) {
             do {
@@ -90,6 +97,7 @@ public class UserFragment extends Fragment {
                 atitles.add(record[0]);
                 adescriptions.add(record[1]);
                 images.add(c.getBlob(2));
+                anames.add(key);
             } while (c.moveToNext());
         }
         db.close();
@@ -101,6 +109,8 @@ public class UserFragment extends Fragment {
         descriptions = new String[adescriptions.size()];
         descriptions = adescriptions.toArray(descriptions);
 
+        names = new String[atitles.size()];
+        names = adescriptions.toArray(names);
     }
 
     @Override

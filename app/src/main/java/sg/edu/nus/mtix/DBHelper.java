@@ -24,12 +24,14 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String columnName4 = "title";
     public static final String columnName5 = "description";
     public static final String columnName6 = "image";
+    public static final String columnName12 = "name";
 
     //all post table column names
     public static final String columnName7 = "_idAllPost";
     public static final String columnName8 = "allTitle";
     public static final String columnName9 = "allDescription";
     public static final String columnName10 = "allImage";
+    public static final String columnName11 = "allName";
 
     //create table
     //qr table create statement
@@ -38,11 +40,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     //mypost table create statement
     private static final String SQLite_CREATE_MyPost =
-            "CREATE TABLE " + myPostTable + "(" + columnName3 + " INTEGER PRIMARY KEY AUTOINCREMENT," + columnName4 + " TEXT NOT NULL," + columnName5 + " TEXT NOT NULL," + columnName6 + " BLOB);";
+            "CREATE TABLE " + myPostTable + "(" + columnName3 + " INTEGER PRIMARY KEY AUTOINCREMENT," + columnName4 + " TEXT NOT NULL," + columnName5 + " TEXT NOT NULL," + columnName6 + " BLOB," + columnName12 + " TEXT NOT NULL);";
 
     //allpost table create statement
     private static final String SQLite_CREATE_AllPost =
-            "CREATE TABLE " + allPostTable + "(" + columnName7 + " INTEGER PRIMARY KEY AUTOINCREMENT," + columnName8 + " TEXT NOT NULL," + columnName9 + " TEXT NOT NULL," + columnName10 + " BLOB);";
+            "CREATE TABLE " + allPostTable + "(" + columnName7 + " INTEGER PRIMARY KEY AUTOINCREMENT," + columnName8 + " TEXT NOT NULL," + columnName9 + " TEXT NOT NULL," + columnName10 + " BLOB," + columnName11 + " TEXT NOT NULL);";
 
     private static final String SQLite_DELETE_QR = "DROP TABLE IF EXISTS" + QRTable;
     private static final String SQLite_DELETE_MyPost = "DROP TABLE IF EXISTS" + myPostTable;

@@ -55,6 +55,14 @@ public class LoginActivity extends AppCompatActivity {
         } else{
             Toast.makeText(getApplicationContext(), "Please fill the form, don't leave any field blank", Toast.LENGTH_LONG).show();
         }*/
+
+        /*
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("name", username);
+
+        editor.commit(); //save changes in SharedPreferences
+        */
     }
 
     public void invokeWS(RequestParams params){

@@ -2,10 +2,12 @@ package sg.edu.nus.mtix;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +27,7 @@ public class HomeFragment extends Fragment {
     public static String[] titles;
     public static String[] descriptions;
     public static ArrayList<byte[]> images = new ArrayList<byte[]>();
+    public static String[] names;
 
     AllPostDB db;
     ListView listview;
@@ -76,8 +79,7 @@ public class HomeFragment extends Fragment {
         initialise(); //initialise title, description, images
 
         for (int i = titles.length-1; i >= 0; i--) {
-            //for (int i = 0; i < titles.length; i++) {
-            RowItem item = new RowItem(titles[i], descriptions[i], images.get(i));
+            RowItem item = new RowItem(titles[i], descriptions[i], images.get(i), names[i]);
             rowItems.add(item);
         }
 
@@ -94,6 +96,10 @@ public class HomeFragment extends Fragment {
         Cursor c = db.getAllRecords();
         ArrayList<String> atitles = new ArrayList<String>();
         ArrayList<String> adescriptions = new ArrayList<String>();
+        ArrayList<String> anames = new ArrayList<String>();
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String key = pref.getString("name", null);
+
 
         if (c.moveToFirst()) {
             do {
@@ -101,6 +107,7 @@ public class HomeFragment extends Fragment {
                 atitles.add(record[0]);
                 adescriptions.add(record[1]);
                 images.add(c.getBlob(2));
+                anames.add(key);
             } while (c.moveToNext());
         }
         db.close();
@@ -111,6 +118,9 @@ public class HomeFragment extends Fragment {
 
         descriptions = new String[adescriptions.size()];
         descriptions = adescriptions.toArray(descriptions);
+
+        names = new String[atitles.size()];
+        names = adescriptions.toArray(names);
     }
 
     @Override
@@ -148,8 +158,8 @@ public class HomeFragment extends Fragment {
         byte[] data1 = os1.toByteArray();
 
         db.open();
-        db.insertRecord("Jay Chou 2016 World Tour", content1, data);
-        db.insertRecord("JJ LIN CONCERT", content2, data1);
+        db.insertRecord("Jay Chou 2016 World Tour", content1, data, "Dan");
+        db.insertRecord("JJ LIN CONCERT", content2, data1, "Crystal");
         db.close();
     }
 }

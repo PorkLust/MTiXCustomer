@@ -3,12 +3,14 @@ package sg.edu.nus.mtix;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -92,12 +94,15 @@ public class AddPostFragment extends DialogFragment {
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 0, outputStream);
                 byte[] data = outputStream.toByteArray();
 
+                SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                String key = pref.getString("name", null);
+
                 db.open();
-                db.insertRecord(titleTyped, contentTyped, data);
+                db.insertRecord(titleTyped, contentTyped, data, key);
                 db.close();
 
                 db1.open();
-                db1.insertRecord(titleTyped, contentTyped, data);
+                db1.insertRecord(titleTyped, contentTyped, data, key);
                 db1.close();
 
                 Toast.makeText(getActivity(), "Post loaded successfully.", Toast.LENGTH_SHORT).show();

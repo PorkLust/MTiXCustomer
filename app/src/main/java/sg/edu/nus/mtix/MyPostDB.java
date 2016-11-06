@@ -25,17 +25,18 @@ public class MyPostDB {
         DBHelper.close();
     }
 
-    public long insertRecord(String title, String content, byte[] data) {
+    public long insertRecord(String title, String content, byte[] data, String name) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(DBHelper.columnName4, title);
         initialValues.put(DBHelper.columnName5, content);
         initialValues.put(DBHelper.columnName6, data);
+        initialValues.put(DBHelper.columnName12, data);
 
         return db.insert(DBHelper.myPostTable, null, initialValues);
     }
 
     public Cursor getAllRecords() {
-        return db.query(DBHelper.myPostTable, new String[] {DBHelper.columnName4, DBHelper.columnName5, DBHelper.columnName6},
+        return db.query(DBHelper.myPostTable, new String[] {DBHelper.columnName4, DBHelper.columnName5, DBHelper.columnName6, DBHelper.columnName12},
                 null, null, null, null, null);
     }
 }
