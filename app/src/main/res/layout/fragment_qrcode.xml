@@ -8,14 +8,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:gravity="center"
         android:background="@drawable/rectangebox">
 
 
     <!-- TODO: Update blank fragment layout -->
     <ImageView
-        android:layout_width="200dip"
-        android:layout_height="200dip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/imageView_QRCode"
+        android:src="@drawable/pic_qrcode"
         android:scaleType="fitXY"
         android:layout_gravity="center" />
 

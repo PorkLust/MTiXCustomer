@@ -19,10 +19,9 @@
             android:text="@string/slide_3_title"
             android:textColor="#212121"
             android:textSize="@dimen/slide_title"
-            android:textStyle="bold"
             android:layout_marginBottom="8dp"
-            android:id="@+id/textView4"
-            android:typeface="monospace" />
+            android:id="@+id/welcomeTitle"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,8 +29,8 @@
             android:text="@string/slide_3_desc"
             android:textColor="#212121"
             android:textSize="@dimen/slide_desc"
-            android:typeface="sans"
-            android:id="@+id/textView5" />
+
+            android:id="@+id/welcomeDesc" />
 
     </LinearLayout>
 
@@ -44,7 +43,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_event"
+            android:src="@drawable/ss_qrcode"
             android:id="@+id/imageView4"
             />
 

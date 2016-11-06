@@ -74,7 +74,7 @@
                         android:background="@null"
                         android:text="Share"
                         android:textColor="@color/niceBlue"
-                        android:textSize="18sp"
+                        android:textSize="20sp"
                         android:id="@+id/btn_post"/>
                 </LinearLayout>
 

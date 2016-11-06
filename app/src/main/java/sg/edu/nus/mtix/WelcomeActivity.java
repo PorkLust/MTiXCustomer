@@ -3,11 +3,12 @@ package sg.edu.nus.mtix;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -173,6 +174,11 @@ public class WelcomeActivity extends AppCompatActivity {
             layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             View view = layoutInflater.inflate(layouts[position], container, false);
+            TextView welcomeTitle = (TextView) view.findViewById(R.id.welcomeTitle);
+            TextView welcomeDesc = (TextView) view.findViewById(R.id.welcomeDesc);
+            Typeface custom_font = Typeface.createFromAsset(getApplicationContext().getAssets(),  "fonts/HelveticaNeue Medium.ttf");
+            welcomeTitle.setTypeface(custom_font);
+            welcomeDesc.setTypeface(custom_font);
             container.addView(view);
 
             return view;
