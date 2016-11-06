@@ -46,6 +46,7 @@ public class CustomListViewAdapter extends ArrayAdapter<RowItem> {
             Typeface custom_font2 = Typeface.createFromAsset(getContext().getApplicationContext().getAssets(),  "fonts/ProximaNovaSoft-Regular.otf");
             holder.titleDisplay.setTypeface(custom_font);
             holder.descriptionDisplay.setTypeface(custom_font2);
+            holder.nameDisplay.setTypeface(custom_font);
             holder.image = (ImageView) convertView.findViewById(R.id.imageViewCustom);
 
             convertView.setTag(holder);

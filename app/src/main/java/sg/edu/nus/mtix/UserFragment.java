@@ -4,6 +4,7 @@ package sg.edu.nus.mtix;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -62,6 +63,8 @@ public class UserFragment extends Fragment {
         String key = pref.getString("name", null);
 
         TextView profileName = (TextView) headerview.findViewById(R.id.textviewProfile);
+        Typeface custom_font = Typeface.createFromAsset(getContext().getApplicationContext().getAssets(),  "fonts/ProximaNovaSoft-Bold.otf");
+        profileName.setTypeface(custom_font);
         profileName.setText(key);
 
         listview.addHeaderView(headerview,null,false);
