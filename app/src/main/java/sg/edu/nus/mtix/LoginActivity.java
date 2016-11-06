@@ -59,7 +59,9 @@ public class LoginActivity extends AppCompatActivity {
         /*
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor = pref.edit();
-        editor.putString("name", username);
+        String[] arr = string.split("@");
+
+        editor.putString("name", arr[0]);
 
         editor.commit(); //save changes in SharedPreferences
         */

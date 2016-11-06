@@ -12,7 +12,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.io.ByteArrayOutputStream;
@@ -57,6 +56,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         listview = (ListView) view.findViewById(R.id.listview1);
 
+        /*
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment {
                 // do what you intend to do on click of listview row
                 RowItem row = rowItems.get(position);
             }
-        });
+        }); */
         rowItems = new ArrayList<RowItem>();
 
         db = new AllPostDB(getActivity());

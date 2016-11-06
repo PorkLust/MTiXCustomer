@@ -40,15 +40,33 @@ public class CustomListViewAdapter extends ArrayAdapter<RowItem> {
             holder.titleDisplay = (TextView) convertView.findViewById(R.id.textViewTitle);
             holder.descriptionDisplay = (TextView) convertView.findViewById(R.id.textViewDescription);
             holder.image = (ImageView) convertView.findViewById(R.id.imageViewCustom);
+
+            //holder.image.setImageDrawable(null);
+            //holder.image.setImageBitmap(null);
+            //holder.image.destroyDrawingCache();
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
+        holder.image.destroyDrawingCache();
         holder.image.setImageDrawable(null);
+        holder.image.setImageBitmap(null);
 
         holder.titleDisplay.setText("Title: " + rowItem.getTitle());
         holder.descriptionDisplay.setText(rowItem.getDesc());
+        holder.image.setImageBitmap(BitmapFactory.decodeByteArray(rowItem.getImage(), 0, (rowItem.getImage().length)));
+
+        //holder.image.destroyDrawingCache();
+      //  holder.image.destroyDrawingCache();
+        //holder.image.setImageDrawable(null);
+       // holder.image.setImageBitmap(null);
+        holder.image.setImageDrawable(null);
+        holder.image.setImageBitmap(null);
+        holder.image.setImageBitmap(BitmapFactory.decodeByteArray(rowItem.getImage(), 0, (rowItem.getImage().length)));
+
+        holder.image.setImageDrawable(null);
+        holder.image.setImageBitmap(null);
         holder.image.setImageBitmap(BitmapFactory.decodeByteArray(rowItem.getImage(), 0, (rowItem.getImage().length)));
 
         return convertView;

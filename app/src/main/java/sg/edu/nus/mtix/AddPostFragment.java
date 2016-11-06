@@ -97,13 +97,18 @@ public class AddPostFragment extends DialogFragment {
                 SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
                 String key = pref.getString("name", null);
 
+                System.out.println("Testing database1");
                 db.open();
                 db.insertRecord(titleTyped, contentTyped, data, key);
                 db.close();
 
+                System.out.println("Testing database2");
+
                 db1.open();
                 db1.insertRecord(titleTyped, contentTyped, data, key);
                 db1.close();
+
+                System.out.println("Ended database");
 
                 Toast.makeText(getActivity(), "Post loaded successfully.", Toast.LENGTH_SHORT).show();
 
