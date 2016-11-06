@@ -137,50 +137,7 @@ public class AddPostFragment extends DialogFragment {
                 dismiss();
             }
         });
-        /*toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                int id = item.getItemId();
-                switch(id) {
-                    case R.id.action_post:
-                        String titleTyped = title.getText().toString();
-                        String contentTyped = content.getText().toString();
-                        Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
 
-                        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                        bitmap.compress(Bitmap.CompressFormat.JPEG, 0, outputStream);
-                        byte[] data = outputStream.toByteArray();
-
-                        db.open();
-                        db.insertRecord(titleTyped, contentTyped, data);
-                        db.close();
-
-                        db1.open();
-                        db1.insertRecord(titleTyped, contentTyped, data);
-                        db1.close();
-
-                        Toast.makeText(getActivity(), "Post loaded successfully.", Toast.LENGTH_SHORT).show();
-
-                        Fragment fragment = UserFragment.newInstance();
-
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, fragment).commit();
-
-                        dismiss();
-                        return true;
-                    case R.id.action_back:
-                        FragmentTransaction fragmentTransaction =  getActivity().getSupportFragmentManager().beginTransaction();
-                        Fragment homeFragment = new HomeFragment();
-                        fragmentTransaction.replace(R.id.frameLayout, homeFragment, "homeFragment");
-                        fragmentTransaction.addToBackStack("homeFragment");
-                        fragmentTransaction.commit();
-                        dismiss();
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        });*/
-       // toolbar.inflateMenu(R.menu.activity_main_actions);
 
         Button uploadImageBtn = (Button) view.findViewById(R.id.button2);
         uploadImageBtn.setOnClickListener(new View.OnClickListener() {
@@ -195,18 +152,6 @@ public class AddPostFragment extends DialogFragment {
         return view;
     }
 
-    /*@Override
-    public void onStart()
-    {
-        super.onStart();
-        Dialog dialog = getDialog();
-        if (dialog != null)
-        {
-            int width = ViewGroup.LayoutParams.MATCH_PARENT;
-            int height = ViewGroup.LayoutParams.MATCH_PARENT;
-            dialog.getWindow().setLayout(width, height);
-        }
-    }*/
 
     @Override
     public void onAttach(Context context) {
@@ -246,7 +191,13 @@ public class AddPostFragment extends DialogFragment {
                 cursor.close();
                 //set image in imageview after decoding the string
 
-                imageView.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
+                Bitmap bitmapImage = BitmapFactory.decodeFile(imgDecodableString);
+                /*ByteArrayOutputStream out = new ByteArrayOutputStream();
+                original.compress(Bitmap.CompressFormat.PNG, 100, out);
+                Bitmap decoded = BitmapFactory.decodeStream(new ByteArrayInputStream(out.toByteArray()));*/
+                int nh = (int) ( bitmapImage.getHeight() * (512.0 / bitmapImage.getWidth()) );
+                Bitmap scaled = Bitmap.createScaledBitmap(bitmapImage, 512, nh, true);
+                imageView.setImageBitmap(scaled);
             }
         } catch (Exception e) {
             System.out.println("Failed to upload image");
