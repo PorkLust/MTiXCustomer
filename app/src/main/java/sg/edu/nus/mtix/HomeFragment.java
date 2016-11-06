@@ -53,7 +53,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        ((MainActivity)getActivity()).setActionBarTitle("Home");
+        ((MainActivity)getActivity()).setActionBarTitle("Feed");
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         listview = (ListView) view.findViewById(R.id.listview1);
 

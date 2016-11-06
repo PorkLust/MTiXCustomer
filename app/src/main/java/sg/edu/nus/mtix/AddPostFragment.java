@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -79,6 +81,10 @@ public class AddPostFragment extends DialogFragment {
         title = (EditText) view.findViewById(R.id.titleInput);
         content = (EditText) view.findViewById(R.id.contentInput);
         imageView = (ImageView) view.findViewById(R.id.imageViewDesc);
+
+        TextView newPostTitle = (TextView) view.findViewById(R.id.newPostTitle);
+        Typeface custom_font = Typeface.createFromAsset(getContext().getApplicationContext().getAssets(),  "fonts/ProximaNovaSoft-Bold.otf");
+        newPostTitle.setTypeface(custom_font);
 
         toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         postBtn = (Button) view.findViewById(R.id.btn_post);

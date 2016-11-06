@@ -9,7 +9,8 @@
     <color name="colorPrimaryLight">#9575CD</color>
     <color name="colorText">#424242</color>
     <color name="colorIcon">#FFFFFF</color>
-    <color name="normblue">#3F51B5</color>
+    <color name="niceBlue">#55ACEE</color>
+    <color name="colorPost">#212121</color>
 
     <!-- dots inactive colors -->
     <color name="dot_dark_screen">#757575</color>

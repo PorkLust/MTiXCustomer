@@ -3,6 +3,7 @@ package sg.edu.nus.mtix;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,10 @@ public class CustomListViewAdapter extends ArrayAdapter<RowItem> {
             holder = new ViewHolder();
             holder.titleDisplay = (TextView) convertView.findViewById(R.id.textViewTitle);
             holder.descriptionDisplay = (TextView) convertView.findViewById(R.id.textViewDescription);
+            Typeface custom_font = Typeface.createFromAsset(getContext().getApplicationContext().getAssets(),  "fonts/ProximaNovaSoft-Bold.otf");
+            Typeface custom_font2 = Typeface.createFromAsset(getContext().getApplicationContext().getAssets(),  "fonts/ProximaNovaSoft-Regular.otf");
+            holder.titleDisplay.setTypeface(custom_font);
+            holder.descriptionDisplay.setTypeface(custom_font2);
             holder.image = (ImageView) convertView.findViewById(R.id.imageViewCustom);
             convertView.setTag(holder);
         } else {

@@ -10,7 +10,7 @@
         android:layout_gravity="center"
         android:id="@+id/actionBarTitle"
         android:text=""
-        android:textColor="@color/colorText"
+        android:textColor="@color/colorPost"
         android:textSize="24sp" />
 
 </LinearLayout>
