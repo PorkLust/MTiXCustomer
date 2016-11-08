@@ -22,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText editText_password;
     ProgressDialog prgDialog;
     TextView errorMsg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,11 +37,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onClick_Login(View view){
-        Intent myIntent = new Intent (this,MainActivity.class);
-        startActivity(myIntent);
+        //  Intent myIntent = new Intent (this,MainActivity.class);
+        // startActivity(myIntent);
         String username = editText_username.getText().toString();
         String password = editText_password.getText().toString();
-        /*errorMsg = (TextView)findViewById(R.id.login_error);
+        errorMsg = (TextView)findViewById(R.id.login_error);
         RequestParams params = new RequestParams();
 
         if(Utility.isNotNull(username) && Utility.isNotNull(password)){
@@ -57,15 +58,17 @@ public class LoginActivity extends AppCompatActivity {
         } else{
             Toast.makeText(getApplicationContext(), "Please fill the form, don't leave any field blank", Toast.LENGTH_LONG).show();
         }
-        */
+
 
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor = pref.edit();
-        String[] arr = username.split("@");
-        editor.putString("name", arr[0]);
+        // String[] arr = username.split("@");
+        editor.putString("name","Ryan");
+        //editor.putString("name", arr[0]);
         editor.commit(); //save changes in SharedPreferences
 
     }
+
 
     public void invokeWS(RequestParams params){
         // Show Progress Dialog
@@ -76,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
         AsyncHttpClient client = new AsyncHttpClient();
         client.post("http://10.0.2.2:8080/MTiXBackend/webresources/mtixwebservice/login",params ,new AsyncHttpResponseHandler() {
             //client.post("http://172.25.101.71:8080/MTiXBackend/webresources/mtixwebservice/login",params ,new AsyncHttpResponseHandler() {
-       // client.post("http://172.20.10.2:8080/MTiXBackend/webresources/mtixwebservice/login",params ,new AsyncHttpResponseHandler() {
+        //client.post("http://192.168.1.2:8080/MTiXBackend/webresources/mtixwebservice/login",params ,new AsyncHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] response) {
@@ -96,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                     // Else display error message
                     else{
                         errorMsg.setText("Invalid");
-                       // Toast.makeText(getApplicationContext(), obj.getString("error_msg"), Toast.LENGTH_LONG).show();
+                        // Toast.makeText(getApplicationContext(), obj.getString("error_msg"), Toast.LENGTH_LONG).show();
                     }
                 } catch (Exception e) {
                     // TODO Auto-generated catch block

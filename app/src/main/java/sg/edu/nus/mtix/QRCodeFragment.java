@@ -35,13 +35,13 @@ public class QRCodeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         db = new QRDB(getActivity());
 
-        //addQRCode();
+        addQRCode();
     }
 
     //convert from bitmap to byte array to string and store in datebase
     public void addQRCode() {
         //convert from bitmap to byte array
-        Bitmap bitmap = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.oct_29_2016);
+        Bitmap bitmap = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.nov_7_2016);
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 0, outputStream);
         byte[] data = outputStream.toByteArray();
@@ -66,7 +66,7 @@ public class QRCodeFragment extends Fragment {
         }
 
         db.close();
-       // imageView.setImageBitmap(BitmapFactory.decodeByteArray(qrCode, 0, qrCode.length));
+        // imageView.setImageBitmap(BitmapFactory.decodeByteArray(qrCode, 0, qrCode.length));
     }
 
     public QRCodeFragment() {
@@ -81,7 +81,7 @@ public class QRCodeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_qrcode, container, false);
         // Inflate the layout for this fragment
         imageView = (ImageView) view.findViewById(R.id.imageView_QRCode);
-       // getQRCode();
+        getQRCode();
         return view;
     }
 

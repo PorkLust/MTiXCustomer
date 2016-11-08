@@ -17,9 +17,9 @@ public class MyReceiver extends BroadcastReceiver {
         PendingIntent contentIntent = PendingIntent.getActivity(context, 0, new Intent(context, MainActivity.class),0);
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
-                .setSmallIcon(R.drawable.jjlin)
-                .setContentTitle("Notification")
-                .setContentText("Hello world");
+                .setSmallIcon(R.drawable.winner)
+                .setContentTitle("Lucky Winner")
+                .setContentText("Congratulations to our lucky draw winner: No. 101!");
 
         mBuilder.setContentIntent(contentIntent);
         mBuilder.setDefaults(Notification.DEFAULT_SOUND);

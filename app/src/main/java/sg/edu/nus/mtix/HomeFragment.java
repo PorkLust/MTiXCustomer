@@ -60,7 +60,8 @@ public class HomeFragment extends Fragment {
 
         db = new AllPostDB(getActivity());
 
-        addDummyRecord();
+
+        //addDummyRecord();
 
         initialise(); //initialise title, description, images, names
 
@@ -134,13 +135,13 @@ public class HomeFragment extends Fragment {
         String content1 = "Just ytd, I attended the Jay Chou concert tour 2016! Certaintly left me deep memories as he sang some of the 2000s' songs that i have been listening since young! Such nostalgic moments! I had a really wonderful time then and i would defintely go for the next one in future!";
         Bitmap bitmap = BitmapFactory.decodeResource(getActivity().getApplicationContext().getResources(), R.drawable.jaychou);
         ByteArrayOutputStream os = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 0, os);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 80, os);
         byte[] data = os.toByteArray();
 
         String content2 = "JJ LIN CONCERT ROCKS! :D AN AVID FAN OF HIS AND HIS CONCERT NV SEEMS TO FAIL ME!:)) HOPE THAT HIS FAN BASE IS ALWAYS INCREASING! WILL SUPPORT HIM FOREVER!:')";
         Bitmap bitmap1 = BitmapFactory.decodeResource(getActivity().getApplicationContext().getResources(), R.drawable.jjlin);
         ByteArrayOutputStream os1 = new ByteArrayOutputStream();
-        bitmap1.compress(Bitmap.CompressFormat.JPEG, 0, os1);
+        bitmap1.compress(Bitmap.CompressFormat.JPEG, 80, os1);
         byte[] data1 = os1.toByteArray();
 
         db.open();

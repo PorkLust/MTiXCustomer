@@ -122,8 +122,8 @@ public class MapsTheatreActivity extends FragmentActivity implements OnMapReadyC
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        //LatLng myLocation = new LatLng(lat, lon); //current location
-        LatLng myLocation = new LatLng(1.295053, 103.773846); //soc location. use this to test out at home
+        LatLng myLocation = new LatLng(lat, lon); //current location
+        //LatLng myLocation = new LatLng(1.295053, 103.773846); //soc location. use this to test out at home
         LatLng starTheatre = new LatLng(1.296705, 103.773150); //clb location
 
         //find distance between two latlng

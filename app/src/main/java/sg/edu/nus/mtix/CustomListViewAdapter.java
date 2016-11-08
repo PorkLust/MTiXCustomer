@@ -36,7 +36,6 @@ public class CustomListViewAdapter extends ArrayAdapter<RowItem> {
         LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 
         if (convertView == null) {
-            // convertView = mInflater.inflate(R.layout.activity_custom_list_view_adapter, parent, false);
             convertView = mInflater.inflate(R.layout.activity_custom_list_view_adapter, null);
             holder = new ViewHolder();
             holder.titleDisplay = (TextView) convertView.findViewById(R.id.textViewTitle);
@@ -61,18 +60,6 @@ public class CustomListViewAdapter extends ArrayAdapter<RowItem> {
         holder.titleDisplay.setText("Title: " + rowItem.getTitle());
         holder.descriptionDisplay.setText(rowItem.getDesc());
         holder.nameDisplay.setText(rowItem.getName());
-        holder.image.setImageBitmap(BitmapFactory.decodeByteArray(rowItem.getImage(), 0, (rowItem.getImage().length)));
-
-        //holder.image.destroyDrawingCache();
-      //  holder.image.destroyDrawingCache();
-        //holder.image.setImageDrawable(null);
-       // holder.image.setImageBitmap(null);
-        holder.image.setImageDrawable(null);
-        holder.image.setImageBitmap(null);
-        holder.image.setImageBitmap(BitmapFactory.decodeByteArray(rowItem.getImage(), 0, (rowItem.getImage().length)));
-
-        holder.image.setImageDrawable(null);
-        holder.image.setImageBitmap(null);
         holder.image.setImageBitmap(BitmapFactory.decodeByteArray(rowItem.getImage(), 0, (rowItem.getImage().length)));
 
         return convertView;

@@ -122,8 +122,8 @@ public class MapsArenaActivity extends FragmentActivity implements OnMapReadyCal
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        //LatLng myLocation = new LatLng(lat, lon); //current location
-        LatLng myLocation = new LatLng(1.295053, 103.773846); //soc location. use this to test out at home
+        LatLng myLocation = new LatLng(lat, lon); //current location
+        // LatLng myLocation = new LatLng(1.295053, 103.773846); //soc location. use this to test out at home
         LatLng starTheatre = new LatLng(1.292423, 103.774017); //biz location
 
         //find distance between two latlng
@@ -135,8 +135,8 @@ public class MapsArenaActivity extends FragmentActivity implements OnMapReadyCal
         locationB.setLongitude(103.774017);
         double distance = locationA.distanceTo(locationB);
 
-        Marker markerA = mMap.addMarker(new MarkerOptions().position(myLocation).title("My Location").snippet("hi"));
-        Marker markerB = mMap.addMarker(new MarkerOptions().position(starTheatre).title("Star Arena").snippet("hello"));
+        Marker markerA = mMap.addMarker(new MarkerOptions().position(myLocation).title("My Location").snippet(""));
+        Marker markerB = mMap.addMarker(new MarkerOptions().position(starTheatre).title("Star Arena").snippet(""));
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation,10));
 
